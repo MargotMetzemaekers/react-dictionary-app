@@ -5,8 +5,7 @@ import "./Dictionary.css";
 
 export default function Dictionary(props) {
   let [keyword, setKeyword] = useState("");
-  let [results, setResults] = useState(null);
-  let [loaded, setLoaded] = useState(false);
+  let [results, setResults] = useState({});
 
   function handleResponse(response) {
     setResults(response.data[0]);
@@ -23,22 +22,12 @@ export default function Dictionary(props) {
     setKeyword(event.target.value);
   }
 
-  function load() {
-    setLoaded(true);
-    search();
-  }
-
-  if (loaded) {
-    return (
-      <div className="Dictionary">
-        <form onSubmit={search}>
-          <input type="search" onChange={handleKeywordChange} />
-        </form>
-        <Results />
-      </div>
-    );
-  } else {
-    load();
-    return "Loading";
-  }
+  return (
+    <div className="Dictionary">
+      <form onSubmit={search}>
+        <input type="search" onChange={handleKeywordChange} />
+      </form>
+      <Results results={results} />
+    </div>
+  );
 }
