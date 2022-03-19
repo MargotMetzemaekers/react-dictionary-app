@@ -4,7 +4,7 @@ import Results from "./Results";
 import Photos from "./Photos";
 import "./Dictionary.css";
 
-export default function Dictionary(props) {
+export default function Dictionary() {
   let [keyword, setKeyword] = useState("");
   let [results, setResults] = useState(null);
   let [photos, setPhotos] = useState(null);
@@ -17,13 +17,15 @@ export default function Dictionary(props) {
     setPhotos(response.data.photos);
   }
 
-  function search() {
+  function search(event) {
+    event.preventDefault();
+
     let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${keyword}`;
     axios.get(apiUrl).then(handleDictionaryResponse);
 
     let pexelsApiKey =
       "563492ad6f917000010000011e6ed10851c449bbb26db46136075803";
-    let pexelsApiUrl = `https://api.pexels.com/v1/search?query=${keyword}&per_page=1`;
+    let pexelsApiUrl = `https://api.pexels.com/v1/search?query=${keyword}&per_page=6`;
     let headers = { Authorization: `Bearer ${pexelsApiKey}` };
     axios.get(pexelsApiUrl, { headers: headers }).then(handlePexelsResponse);
   }
