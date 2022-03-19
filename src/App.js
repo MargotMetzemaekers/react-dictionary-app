@@ -9,9 +9,20 @@ function App() {
         <Dictionary />
       </main>
       <footer className="text-center">
-        Coded by{" "}
+        Coded open source on{" "}
+        <a
+          href="https://github.com/MargotMetzemaekers/react-dictionary-app"
+          target="_blank"
+        >
+          Github
+        </a>
+        by
         <a href="https://www.linkedin.com/in/margot-metzemaekers/">
           Margot Metzemaekers 👩‍💻
+        </a>
+        hosted on
+        <a href="https://app.netlify.com/teams/margotmetzemaekers/overview">
+          Netlify
         </a>
       </footer>
     </div>
