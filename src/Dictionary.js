@@ -7,6 +7,7 @@ import "./Dictionary.css";
 export default function Dictionary(props) {
   let [keyword, setKeyword] = useState(props.defaultKeyword);
   let [results, setResults] = useState(null);
+  let [loaded, setLoaded] = useState(false);
   let [photos, setPhotos] = useState(null);
 
   function handleDictionaryResponse(response) {
@@ -32,21 +33,27 @@ export default function Dictionary(props) {
     setKeyword(event.target.value);
   }
 
-  return (
-    <div className="Dictionary">
-      <section>
-        <form onSubmit={search}>
-          <input
-            type="search"
-            onChange={handleKeywordChange}
-            defaultValue={props.defaultKeyword}
-            placeholder="Type a word..."
-          />
-        </form>
-        <div className="hint">Suggested keywords: sunset, dog, plant...</div>
-      </section>
-      <Results results={results} />
-      <Photos photos={photos} />
-    </div>
-  );
+  function load() {
+    setLoaded(true);
+    search();
+  }
+  if (loaded) {
+    return (
+      <div className="Dictionary">
+        <section>
+          <form onSubmit={search}>
+            <input
+              type="search"
+              onChange={handleKeywordChange}
+              defaultValue={props.defaultKeyword}
+              placeholder="Type a word..."
+            />
+          </form>
+          <div className="hint">Suggested keywords: sunset, dog, plant...</div>
+        </section>
+        <Results results={results} />
+        <Photos photos={photos} />
+      </div>
+    );
+  }
 }
