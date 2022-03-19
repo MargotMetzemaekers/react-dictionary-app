@@ -13,6 +13,7 @@ function App() {
         <a
           href="https://github.com/MargotMetzemaekers/react-dictionary-app"
           target="_blank"
+          rel="noreferrer"
         >
           Github
         </a>
