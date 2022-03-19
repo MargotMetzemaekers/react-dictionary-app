@@ -5,7 +5,7 @@ import Photos from "./Photos";
 import "./Dictionary.css";
 
 export default function Dictionary(props) {
-  let [keyword, setKeyword] = useState("");
+  let [keyword, setKeyword] = useState(props.defaultKeyword);
   let [results, setResults] = useState(null);
   let [photos, setPhotos] = useState(null);
 
@@ -18,7 +18,7 @@ export default function Dictionary(props) {
   }
 
   function search() {
-    let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${keyword}`;
+    let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en_US/${keyword}`;
     axios.get(apiUrl).then(handleDictionaryResponse);
 
     let pexelsApiKey =
@@ -39,6 +39,7 @@ export default function Dictionary(props) {
           <input
             type="search"
             onChange={handleKeywordChange}
+            defaultValue={props.defaultKeyword}
             placeholder="Type a word..."
           />
         </form>
