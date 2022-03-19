@@ -28,10 +28,6 @@ export default function Dictionary(props) {
     let headers = { Authorization: `Bearer ${pexelsApiKey}` };
     axios.get(pexelsApiUrl, { headers: headers }).then(handlePexelsResponse);
   }
-  function handleSubmit(event) {
-    event.preventDefault();
-    search();
-  }
 
   function handleKeywordChange(event) {
     setKeyword(event.target.value);
