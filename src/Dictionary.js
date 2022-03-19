@@ -4,10 +4,9 @@ import Results from "./Results";
 import Photos from "./Photos";
 import "./Dictionary.css";
 
-export default function Dictionary(props) {
-  let [keyword, setKeyword] = useState(props.defaultKeyword);
+export default function Dictionary() {
+  let [keyword, setKeyword] = useState("");
   let [results, setResults] = useState(null);
-  let [loaded, setLoaded] = useState(false);
   let [photos, setPhotos] = useState(null);
 
   function handleDictionaryResponse(response) {
@@ -33,30 +32,20 @@ export default function Dictionary(props) {
     setKeyword(event.target.value);
   }
 
-  function load() {
-    setLoaded(true);
-    search();
-  }
-  if (loaded) {
-    return (
-      <div className="Dictionary">
-        <section>
-          <form onSubmit={search}>
-            <input
-              type="search"
-              onChange={handleKeywordChange}
-              defaultValue={props.defaultKeyword}
-              placeholder="Type a word..."
-            />
-          </form>
-          <div className="hint">Suggested keywords: sunset, dog, plant...</div>
-        </section>
-        <Results results={results} />
-        <Photos photos={photos} />
-      </div>
-    );
-  } else {
-    load();
-    return "Loading...";
-  }
+  return (
+    <div className="Dictionary">
+      <section>
+        <form onSubmit={search}>
+          <input
+            type="search"
+            onChange={handleKeywordChange}
+            placeholder="Type a word..."
+          />
+        </form>
+        <div className="hint">Suggested keywords: sunset, dog, plant...</div>
+      </section>
+      <Results results={results} />
+      <Photos photos={photos} />
+    </div>
+  );
 }
