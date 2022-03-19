@@ -16,11 +16,11 @@ function App() {
         >
           Github
         </a>
-        by
+        by{" "}
         <a href="https://www.linkedin.com/in/margot-metzemaekers/">
           Margot Metzemaekers 👩‍💻
         </a>
-        hosted on
+        hosted on{" "}
         <a href="https://app.netlify.com/teams/margotmetzemaekers/overview">
           Netlify
         </a>
