@@ -55,5 +55,8 @@ export default function Dictionary(props) {
         <Photos photos={photos} />
       </div>
     );
+  } else {
+    load();
+    return "Loading...";
   }
 }
