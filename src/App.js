@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noreferrer"
         >
-          Github
+          Github{" "}
         </a>
         by{" "}
         <a href="https://www.linkedin.com/in/margot-metzemaekers/">
